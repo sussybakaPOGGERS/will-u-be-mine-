@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>For You, Ceryss ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #ffdce0, #ffeef3);
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+      text-align: center;
+      color: #d10068;
+    }
+
+    .container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      animation: fadeIn 2s ease-out;
+    }
+
+    p {
+      font-size: 1.5rem;
+      margin-bottom: 30px;
+      animation: fadeIn 3s ease-out;
+    }
+
+    .btns {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    #yesBtn {
+      background-color: #ff69b4;
+      color: white;
+      box-shadow: 0 0 15px #ff69b4;
+    }
+
+    #yesBtn:hover {
+      transform: scale(1.1);
+    }
+
+    #noBtn {
+      background-color: #ffffff;
+      color: #ff69b4;
+      border: 2px solid #ff69b4;
+      position: relative;
+    }
+
+    #noBtn:hover {
+      position: absolute;
+      top: calc(50% - 20px);
+      left: calc(50% + (Math.random() * 200 - 100) + 'px');
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hearts {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      transform: rotate(45deg);
+      animation: float 6s infinite ease-in;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) rotate(45deg);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) rotate(45deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="hearts">
+    <!-- lots of hearts randomly -->
+    ${Array.from({ length: 30 }).map(() => `
+      <div class="heart" style="left: ${Math.random() * 100}%; animation-delay: ${Math.random() * 5}s;"></div>
+    `).join('')}
+  </div>
+
+  <div class="container">
+    <h1>Hey Ceryss... 💌</h1>
+    <p>You make my world brighter, my days sweeter, and my heart lighter.</p>
+    <p>So I gotta ask you...</p>
+    <h1>🌹 Will you be my girl? 🌹</h1>
+    <div class="btns">
+      <button id="yesBtn" onclick="alert('YAAAAY!! 💘 I’m the luckiest person ever!')">YES</button>
+      <button id="noBtn" onmouseover="moveButton()">NO</button>
+    </div>
+  </div>
+
+  <audio autoplay loop>
+    <source src="your-music.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    const noBtn = document.getElementById('noBtn');
+    function moveButton() {
+      const x = Math.random() * window.innerWidth;
+      const y = Math.random() * window.innerHeight;
+      noBtn.style.left = x + 'px';
+      noBtn.style.top = y + 'px';
+    }
+  </script>
+</body>
+</html>
